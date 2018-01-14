@@ -1,4 +1,4 @@
-var postsData = [
+/*var postsData = [
 	{
 		title: 'Introducing Telescope',
 		url: 'http://sachagreif.com/introducing-telescope/'
@@ -14,4 +14,10 @@ var postsData = [
 ];
 Template.postsList.helpers({
 	posts: postsData
+});*/
+
+Template.postsList.helpers({
+	posts: function() {
+		return Posts.find();
+	}
 });
