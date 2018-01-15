@@ -1,53 +1,57 @@
+// Fixture data
 if (Posts.find().count() === 0) {
 	var now = new Date().getTime();
 	// create two users
-	var abirId = Meteor.users.insert({
-		profile: { name: 'Abir Saha' }
+	var tomId = Meteor.users.insert({
+		profile: { name: 'Tom Coleman' }
 	});
-	var abir = Meteor.users.findOne(abirId);
+	var tom = Meteor.users.findOne(tomId);
 
-	var maitrayeId = Meteor.users.insert({
-		profile: { name: 'Maitraye Das' }
+	var sachaId = Meteor.users.insert({
+		profile: { name: 'Sacha Greif' }
 	});
-	var maitraye = Meteor.users.findOne(maitrayeId);
+	var sacha = Meteor.users.findOne(sachaId);
 	
 	var telescopeId = Posts.insert({
 		title: 'Introducing Telescope',
-		userId: maitraye._id,
-		author: maitraye.profile.name,
+		userId: sacha._id,
+		author: sacha.profile.name,
 		url: 'http://sachagreif.com/introducing-telescope/',
-		submitted: new Date(now - 7 * 3600 * 1000)
+		submitted: new Date(now - 7 * 3600 * 1000),
+		commentsCount: 2
 	});
 
 	Comments.insert({
 		postId: telescopeId,
-		userId: abir._id,
-		author: abir.profile.name,
+		userId: tom._id,
+		author: tom.profile.name,
 		submitted: new Date(now - 5 * 3600 * 1000),
 		body: 'Interesting project Sacha, can I get involved?'
 	});
 
 	Comments.insert({
 		postId: telescopeId,
-		userId: maitraye._id,
-		author: maitraye.profile.name,
+		userId: sacha._id,
+		author: sacha.profile.name,
 		submitted: new Date(now - 3 * 3600 * 1000),
 		body: 'You sure can Tom!'
 	});
 
 	Posts.insert({
 		title: 'Meteor',
-		userId: abir._id,
-		author: abir.profile.name,	
+		userId: tom._id,
+		author: tom.profile.name,
 		url: 'http://meteor.com',
-		submitted: new Date(now - 10 * 3600 * 1000)
+		submitted: new Date(now - 10 * 3600 * 1000),
+		commentsCount: 0
 	});
 
 	Posts.insert({
 		title: 'The Meteor Book',
-		userId: abir._id,
-		author: abir.profile.name,
+		userId: tom._id,
+		author: tom.profile.name,
 		url: 'http://themeteorbook.com',
-		submitted: new Date(now - 12 * 3600 * 1000)
+		submitted: new Date(now - 12 * 3600 * 1000),
+		commentsCount: 0
 	});
 }
