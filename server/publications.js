@@ -2,8 +2,9 @@ Meteor.publish('posts', function() {
 	return Posts.find();
 });
 
-Meteor.publish('comments', function() {
-	return Comments.find();
+Meteor.publish('comments', function(postId) {
+	check(postId, String);
+	return Comments.find({postId: postId});
 });
 
 /* published posts which are not flagged and written by author
