@@ -6,10 +6,11 @@
 			</h3>
 			<p>
 				submitted by {{author}},
-				<a href="{{pathFor 'postPage'}}">{{commentsCount}} comments</a>
+				<a href="{{pathFor 'postPage'}}">{{commentsCount}} reviews</a>
 				{{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}
 			</p>
+			<p>{{url}}</p>
 		</div>
-		<a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a>
+		<!-- <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">See more</a> -->
 	</div>
 </template>
