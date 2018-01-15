@@ -2,55 +2,55 @@
 if (Posts.find().count() === 0) {
 	var now = new Date().getTime();
 	// create two users
-	var tomId = Meteor.users.insert({
-		profile: { name: 'Tom Coleman' }
+	var maitrayeId = Meteor.users.insert({
+		profile: { name: 'Maitraye Das' }
 	});
-	var tom = Meteor.users.findOne(tomId);
+	var maitraye = Meteor.users.findOne(maitrayeId);
 
-	var sachaId = Meteor.users.insert({
-		profile: { name: 'Sacha Greif' }
+	var abirId = Meteor.users.insert({
+		profile: { name: 'Abir Saha' }
 	});
-	var sacha = Meteor.users.findOne(sachaId);
+	var abir = Meteor.users.findOne(abirId);
 	
-	var telescopeId = Posts.insert({
-		title: 'Introducing Telescope',
-		userId: sacha._id,
-		author: sacha.profile.name,
-		url: 'http://sachagreif.com/introducing-telescope/',
+	var firstPostId = Posts.insert({
+		title: 'Nice party place near Evanston',
+		userId: abir._id,
+		author: abir.profile.name,
+		description: 'Exciting new party place for the students of Northwestern',
 		submitted: new Date(now - 7 * 3600 * 1000),
 		commentsCount: 2
 	});
 
 	Comments.insert({
-		postId: telescopeId,
-		userId: tom._id,
-		author: tom.profile.name,
+		postId: firstPostId,
+		userId: maitraye._id,
+		author: maitraye.profile.name,
 		submitted: new Date(now - 5 * 3600 * 1000),
-		body: 'Interesting project Sacha, can I get involved?'
+		body: 'Interesting, I want to book this place.'
 	});
 
 	Comments.insert({
-		postId: telescopeId,
-		userId: sacha._id,
-		author: sacha.profile.name,
+		postId: firstPostId,
+		userId: abir._id,
+		author: abir.profile.name,
 		submitted: new Date(now - 3 * 3600 * 1000),
-		body: 'You sure can Tom!'
+		body: 'You are welcome!'
 	});
 
 	Posts.insert({
-		title: 'Meteor',
-		userId: tom._id,
-		author: tom.profile.name,
-		url: 'http://meteor.com',
+		title: 'Party place near Loyola',
+		userId: maitraye._id,
+		author: maitraye.profile.name,
+		description: 'Nice place to throw party with two large rooms',
 		submitted: new Date(now - 10 * 3600 * 1000),
 		commentsCount: 0
 	});
 
 	Posts.insert({
-		title: 'The Meteor Book',
-		userId: tom._id,
-		author: tom.profile.name,
-		url: 'http://themeteorbook.com',
+		title: 'Party place near Lakeview, Chicago',
+		userId: maitraye._id,
+		author: maitraye.profile.name,
+		description: 'Do you want places for party near Lakeview? We are here to help',
 		submitted: new Date(now - 12 * 3600 * 1000),
 		commentsCount: 0
 	});

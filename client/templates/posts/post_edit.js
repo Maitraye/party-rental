@@ -16,12 +16,12 @@ Template.postEdit.events({
 		e.preventDefault();
 		var currentPostId = this._id;
 		var postProperties = {
-			url: $(e.target).find('[name=url]').val(),
+			description: $(e.target).find('[name=description]').val(),
 			title: $(e.target).find('[name=title]').val()
 		}
 
 		var errors = validatePost(postProperties);
-		if (errors.title || errors.url)
+		if (errors.title || errors.description)
 			return Session.set('postEditErrors', errors);
 
 		// Here the post is updated directly, 
@@ -36,7 +36,7 @@ Template.postEdit.events({
 				// if the url already exists, result_id will be different from currentPostId. Route to the resultId
 				if (result._id != currentPostId) {
 					// alert('This link has already been posted');
-					throwError('This link has already been posted');
+					throwError('This description has already been posted');
 					Router.go('postPage', {_id: result._id});
 				} 
 				// if the url does not exist, result_id will be same with currentPostId. Update and route to currentPostId
