@@ -21,3 +21,10 @@ Template.postsList.helpers({
 		return Posts.find();
 	}
 });
+
+/* show posts by bob-smith with category JavaScript
+Template.posts.helpers({
+	posts: function(){
+		return Posts.find({author: 'bob-smith', category: 'JavaScript'});
+	}
+}); */
