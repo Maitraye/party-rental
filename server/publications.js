@@ -2,6 +2,10 @@ Meteor.publish('posts', function() {
 	return Posts.find();
 });
 
+Meteor.publish('comments', function() {
+	return Comments.find();
+});
+
 /* published posts which are not flagged and written by author
 Meteor.publish('posts', function() {
 	return Posts.find({flagged: false, author: author});
