@@ -12,11 +12,13 @@ Template.postEdit.events({
 		Meteor.call('postEdit', postProperties, function(error, result) {
 			if (error) {	
 				// display the error to the user
-				alert(error.reason);
+				// alert(error.reason);
+				throwError(error.reason);
 			} else {
 				// if the url already exists, result_id will be different from currentPostId. Route to the resultId
 				if (result._id != currentPostId) {
-					alert('This link has already been posted');
+					// alert('This link has already been posted');
+					throwError('This link has already been posted');
 					Router.go('postPage', {_id: result._id});
 				} 
 				// if the url does not exist, result_id will be same with currentPostId. Update and route to currentPostId
@@ -24,7 +26,8 @@ Template.postEdit.events({
 					Posts.update(currentPostId, {$set: postProperties}, function(error) {
 						if (error) {	
 							// display the error to the user
-							alert(error.reason);
+							// alert(error.reason);
+							throwError(error.reason);
 						} else {
 							Router.go('postPage', {_id: currentPostId});
 						}
